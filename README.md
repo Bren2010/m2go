@@ -5,8 +5,8 @@ m2go is a [Mongrel2](http://mongrel2.org/) handler for [Google's Go](http://gola
 How To Install
 --------------
 ```bash
-# go get github.com/alecthomas/gozmq
-# go get github.com/Bren2010/m2go
+go get github.com/alecthomas/gozmq
+go get github.com/Bren2010/m2go
 ```
 
 Example
