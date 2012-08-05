@@ -4,12 +4,15 @@ m2go is a [Mongrel2](http://mongrel2.org/) handler for [Google's Go](http://gola
 
 How To Install
 --------------
-```# go get github.com/alecthomas/gozmq
-# go get github.com/Bren2010/m2go```
+```
+# go get github.com/alecthomas/gozmq
+# go get github.com/Bren2010/m2go
+```
 
 Example
 -------
-```package main
+```
+package main
 
 import (
     m2go "github.com/Bren2010/m2go"
@@ -31,7 +34,8 @@ func main() {
         
         packet.Respond("Hello, World!")
     }
-}```
+}
+```
 
 License
 -------
