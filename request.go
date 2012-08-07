@@ -23,11 +23,6 @@ func (r *Request) Send(body string) {
     r.connection.send.Send([]byte(resp), 0)
 }
 
-// Terminate a connection.
-func (r *Request) Kill() {
-    r.Send("")
-}
-
 // Respond to a request and kill the connection.
 func (r *Request) Respond(body string) {
     r.Send(body)
@@ -45,6 +40,11 @@ func (r *Request) RespondJson(data interface{}) {
 // Respond to a request with valid HTTP response.
 func (r *Request) RespondHTTP(body, code, status string, headers map[string]string) {
     r.Send(httpResponse(body, code, status, headers))
+}
+
+// Terminate a connection.
+func (r *Request) Kill() {
+    r.Send("")
 }
 
 // Returns true if the packet is a disconnect.

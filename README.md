@@ -1,6 +1,7 @@
 m2go
 ====
-m2go is a [Mongrel2](http://mongrel2.org/) handler for [Google's Go](http://golang.org/).
+m2go is a [Mongrel2](http://mongrel2.org/) handler for 
+[Google's Go](http://golang.org/).
 
 How To Install
 --------------
@@ -29,13 +30,18 @@ func main() {
     defer conn.Close()
     
     for true {
-        packet, _ := conn.Read()
-        if packet.IsDisconnect() { continue }
+        req, _ := conn.Read()
+        if req.IsDisconnect() { continue }
         
-        packet.Respond("Hello, World!")
+        req.Respond("Hello, World!")
     }
 }
 ```
+
+To Do
+-----
+1.  More examples.
+2.  Utilities -- Session handler, convenience wrappers.
 
 License
 -------

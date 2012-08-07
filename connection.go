@@ -1,6 +1,7 @@
 package m2go
 
 import (
+    "fmt"
     "bytes"
     "encoding/json"
     "strconv"
@@ -9,7 +10,7 @@ import (
 )
 
 type Connection struct {
-    senderId string
+    SenderId string
     context zmq.Context
     recv zmq.Socket
     send zmq.Socket
@@ -79,7 +80,7 @@ func (c *Connection) Read() (*Request, error) {
 
 // Deliver a message to a list of ids.
 func (c *Connection) Deliver(uuid string, ids []string, body string) {
-    if len(ids) == 0 { return } // Prevent silliness.
+    if len(ids) == 0 { fmt.Println("Failed."); return } // Prevent silliness.
     
     // Limit number of ids to 128.
     rest := []string{}
@@ -92,7 +93,7 @@ func (c *Connection) Deliver(uuid string, ids []string, body string) {
     id := strings.Join(ids, " ")
     size := strconv.Itoa(len(id))
     resp := uuid + " " + size + ":" + id + ", " + body
-    
+    fmt.Println(resp)
     c.send.Send([]byte(resp), 0)
     
     if len(rest) != 0 { c.Deliver(uuid, rest, body) }

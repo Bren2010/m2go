@@ -15,9 +15,9 @@ func main() {
     defer conn.Close()
     
     for true {
-        packet, _ := conn.Read()
-        if packet.IsDisconnect() { continue }
+        req, _ := conn.Read()
+        if req.IsDisconnect() { continue }
         
-        packet.Respond("Hello, World!")
+        req.Respond("Hello, World!")
     }
 }
